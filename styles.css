@@ -4,9 +4,15 @@ body{
 
 #box{
     color: white;
-    display: flex;
+    /* display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
+    text-align: center;
+    margin: 20%;
 }
 
+#reset{
+    margin: 0 auto;
+    display: block;
+}
 
