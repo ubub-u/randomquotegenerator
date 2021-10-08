@@ -39,23 +39,26 @@ let colors = ['#00203FFF', '#ADEFD1FF', '#2C5F2D', '#97BC62FF', '#0063B2FF', '#9
 
 
 reset.addEventListener('click', function(){
-    main();
+    printQuote();
     changecolors();
 })
 
-function main(){
+function getRandomQuote(){
     let randomNumber = Math.floor((Math.random() * quotes.length) + 1) - 1;
     if(randomNumber == previousnum){
         randomNumber = Math.floor((Math.random() * quotes.length) + 1) - 1;
     }
-    console.log(randomNumber);
+    previousnum = randomNumber;
+    return quotes[randomNumber];
+}
 
-    if(randomNumber == 0){
-        textdiv.innerHTML = `<p><strong>${quotes[randomNumber].quote}</strong></p><span> - ${quotes[randomNumber].source}</span><span> ${quotes[randomNumber].year} ${quotes[randomNumber].citation}</span>`;
+function printQuote(){
+    let quote = getRandomQuote();
+    if( quote == quotes[0]){
+        textdiv.innerHTML = `<p><strong>${quote.quote}</strong></p><span> - ${quote.source}</span><span> ${quote.year} ${quote.citation}</span>`;
     } else {
-        textdiv.innerHTML = `<p><strong>${quotes[randomNumber].quote}</strong></p><span> - ${quotes[randomNumber].source}</span>`;
+        textdiv.innerHTML = `<p><strong>${quote.quote}</strong></p><span> - ${quote.source}</span>`;
     }
-    previousnum = randomNumber
 }
 
 function changecolors(){
@@ -64,5 +67,5 @@ function changecolors(){
     reset.style.backgroundColor = colors[randomNumber];
 }
 
-main();
+printQuote();
 body.style.backgroundColor = '#f98866'
